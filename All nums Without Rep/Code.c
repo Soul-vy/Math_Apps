@@ -1,0 +1,61 @@
+#include<stdio.h>
+
+int main()
+{
+    int num[4],n[9]= {0},same[9]={0};
+    int a=0,b,c,i,j,k,temp;
+    printf("enter 4 nums\n");
+    for (i=0; i<4; i++)
+    {
+        printf("%i num=>\t",++i);
+        i--;
+        scanf("%i",&num[i]);
+        same[i]++;
+        if (same[i]==4)
+        a++;
+    }
+    printf("\nall possible nums is...\n");
+    if (a)
+    for (a=0;a<4;a++)
+    printf("%i",num[0]);
+    else
+    for (a=0; a<4; a++)
+    {
+        if (a)
+        {
+            temp=num[a];
+            num[a]=num[0];
+            num[0]=temp;
+        }
+        k=num[0];
+        n[k]++;
+        if (n[k]>1)
+            continue;
+        for (b=0; b<3; b++)
+        {
+            for (c=0; c<1; c++)
+            {
+                printf("\n*\n");
+                for (i=0; i<4; i++)
+                {
+                    printf("%i\n",num[i]);
+                }
+                temp=num[3];
+                num[3]=num[2];
+                num[2]=temp;
+                printf("\n*\n");
+                for (i=0; i<4; i++)
+                {
+                    printf("%i\n",num[i]);
+                }
+            }
+            temp=num[2];
+            num[2]=num[1];
+            num[1]=temp;
+        }
+    }
+
+
+
+    return 0;
+}
